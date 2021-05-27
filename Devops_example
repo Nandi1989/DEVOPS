@@ -1,2 +1,8 @@
-#Devops#
-ajBDSKJSFcBKJSDCKKFLC NVLNC FBLVKDB B
+#!/bin/bash
+
+# Shell scripting example
+ls
+
+cat /etc/passwd
+
+echo -e "\e[32m Hello Nandi/e[0m"
