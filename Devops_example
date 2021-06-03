@@ -6,3 +6,9 @@ ls
 cat /etc/passwd
 
 echo -e "\e[32m Hello Nandi/e[0m"
+
+
+var = 2344
+echo $var
+$var
+echo "Variable value is = $var"
