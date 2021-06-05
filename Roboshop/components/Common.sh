@@ -1,7 +1,7 @@
 #!/bin/bash
 
 HEAD() {
-  echo -n "\e[32m $1 \e[0m \t\t"
+  echo -e "\e[32m $1 \e[0m \t\t"
 }
 
 STAT() {
