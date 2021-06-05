@@ -21,7 +21,7 @@ mv /usr/share/nginx/html/static/* /usr/share/nginx/html/. &>>/tmp/roboshop.log
 STAT $?
 
 HEAD "Move conf file"
-mv localhost.conf /etc/nginx/default.d/roboshop.conf
+mv /usr/share/nginx/html/localhost.conf /etc/nginx/default.d/roboshop.conf
 STAT $?
 
 HEAD "Restart nginx"
