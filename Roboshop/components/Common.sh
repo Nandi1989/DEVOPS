@@ -1,7 +1,7 @@
 #!/bin/bash
 
 HEAD() {
-  echo -n " $1 \t\t\t ..."
+  echo -n -e "\e[1m $1 \e[0m \t\t ... "
 }
 
 STAT() {
@@ -9,6 +9,8 @@ STAT() {
     echo -e "\e[31m done \e[0m"
   else
     echo -e "\e[31m fail \e[0m"
+    echo -e "\e[31m check for more detail ... Log-File : /tmp/roboshop.log \e[0m"
+    exit 1
   fi
 
 }
