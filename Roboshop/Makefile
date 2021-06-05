@@ -1,36 +1,38 @@
 #!/bin/bash
-help: ## Print help message
-    @fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
+
+
+help:           ## Show this help.
+	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
 Frontend: ## install Frontend
-    @sh Frontend.sh
+	@sh Frontend.sh
 
 mongodb: ## setup mongodb
-    @sh Mongodb.sh
+	@sh Mongodb.sh
 
 cart: ## setup cart
-    @sh cart.sh
+	@sh cart.sh
 
 catalogue: ## setup catalogue
-    @sh catalogue.sh
+	@sh catalogue.sh
 
 mysql: ## setup mysql
-    @sh mysql.sh
+	@sh mysql.sh
 
 payment: ## setup payment
-    @sh payment.sh
+	@sh payment.sh
 
 rabbitmq: ## setup rabbitmq
-    @sh rabbitmq.sh
+	@sh rabbitmq.sh
 
 redis: ## setup redis
-    @sh redis.sh
+	@sh redis.sh
 
 shipping: ## setup shipping
-    @sh shipping.sh
+	@sh shipping.sh
 
 user: ## setup user
-    @sh user.sh
+	@sh user.sh
 
 
 
