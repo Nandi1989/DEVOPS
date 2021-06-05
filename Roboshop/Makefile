@@ -5,34 +5,34 @@ help:           ## Show this help.
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
 Frontend: ## install Frontend
-	@sh Frontend.sh
+	@sh components/Frontend.sh
 
 mongodb: ## setup mongodb
-	@sh Mongodb.sh
+	@sh components/Mongodb.sh
 
 cart: ## setup cart
-	@sh cart.sh
+	@sh components/cart.sh
 
 catalogue: ## setup catalogue
-	@sh catalogue.sh
+	@sh components/catalogue.sh
 
 mysql: ## setup mysql
-	@sh mysql.sh
+	@sh components/mysql.sh
 
 payment: ## setup payment
-	@sh payment.sh
+	@sh components/payment.sh
 
 rabbitmq: ## setup rabbitmq
-	@sh rabbitmq.sh
+	@sh components/rabbitmq.sh
 
 redis: ## setup redis
-	@sh redis.sh
+	@sh components/redis.sh
 
 shipping: ## setup shipping
-	@sh shipping.sh
+	@sh components/shipping.sh
 
 user: ## setup user
-	@sh user.sh
+	@sh components/user.sh
 
 
 
