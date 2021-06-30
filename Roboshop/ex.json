@@ -1,0 +1,9 @@
+{
+  "fruit" : "Apple",
+  "count" : 100,
+  "type" : ["red", "green"],
+  "type_count" : {
+    "red" : 10,
+    "green" : 40
+  }
+}
