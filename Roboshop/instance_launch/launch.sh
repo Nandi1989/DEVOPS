@@ -4,7 +4,7 @@ component=$1
 
 ## component name check
 if [ -z ${component} ];  then
-    echo -e "\e[31m component name is needed \[0m"
+    echo -e "\e[31m component name is needed \e[0m"
     exit 1
 fi
 
