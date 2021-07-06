@@ -15,6 +15,6 @@ fi
 ##  aws ec2 describe-instances --filters "name=tag:Name,values=${component}"
 
 
-}
+##}
 
-if
+##if
