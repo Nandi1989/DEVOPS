@@ -4,12 +4,12 @@ component=$1
 
 ## component name check
 if [ -z ${component} ];  then
-    echo "\e[31m component name is needed \[0m"
+    echo -e "\e[31m component name is needed \[0m"
     exit 1
 fi
 
-##LTID=
-##LTIDVER=
+##LTID=lt-0bc9e6d40bf1e5c3c
+##LTIDVER=2
 
 ##INSTANCE_CREATE() {
 ##  aws ec2 describe-instances --filters "name=tag:Name,values=${component}"
