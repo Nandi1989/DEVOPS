@@ -17,6 +17,6 @@ INSTANCE_CREATE() {
 
 }
 
-if [ "$1" = "Frontend" ]; then
+if [ "$1" == "Frontend" ]; then
 INSTANCE_CREATE
 fi
