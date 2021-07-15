@@ -5,7 +5,7 @@ source components/Common.sh
 rm -f /tmp/roboshop.log
 
 HEAD "Install nginx"
-yum install nginx -y &>>/tmp/roboshop.log
+  yum install nginx -y &>> /tmp/roboshop.log
 STAT $?
 
 HEAD "Download HTDOCS content from GITHUB"
