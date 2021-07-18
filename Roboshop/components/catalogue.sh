@@ -5,15 +5,15 @@ source components/Common.sh
 rm -f /tmp/roboshop.log
 
 HEAD "Install nodejs"
-yum install nodejs make gcc-c++ -y >> /tmp/roboshop.log
+yum install nodejs make gcc-c++ -y &>> /tmp/roboshop.log
 STAT $?
 
 HEAD "Add user"
-id roboshop >> /tmp/roboshop.log
+id roboshop &>> /tmp/roboshop.log
 if [ $? -eq 0 ]; then
   echo "user exists"
 else
-  useradd roboshop >> /tmp/roboshop.log
+  useradd roboshop &>> /tmp/roboshop.log
 fi
 STAT $?
 

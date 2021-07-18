@@ -13,7 +13,7 @@ LVER=1
 
 
 DNS_UPDATE() {
-  PRIVATEIP=$(aws ec2 describe-instances --filters "Name=tag:Name, Values:${COMPONENT}" | jq .Reservations[].Instances[].PrivateIpAddress | xargs n1)
+  PRIVATEIP=$(aws ec2 describe-instances --filters "Name=tag:Name, Values=${COMPONENT}" | jq .Reservations[].Instances[].PrivateIpAddress | xargs n1)
   sed -e "s/COMPONENT/${COMPONENT}/" -e "s/IPADDRESS/${PRIVATEIP}/" record.json > tmp/record.json
   aws route53 change-resource-record-sets --hosted-zone-id Z031396221895VDGBP6VC --change-batch file:///tmp/record.json | jq
 
@@ -22,13 +22,13 @@ DNS_UPDATE() {
 INSTANCE_CREATE() {
   INSTANCE_STATE=$(aws ec2 describe-instances --filters "Name=tag:Name, Values:${COMPONENT}" | jq .Reservations[].Instances[].State.Name | xargs n1)
 
-  if [ ${INSTANCE_STATE} == "running" ]; then
+  if [ ${INSTANCE_STATE} = "running" ]; then
     echo "Instance already exists"
     DNS_UPDATE
     return 0
   fi
 
-  if [ ${INSTANCE_STATE} == "stopped" ]; then
+  if [ ${INSTANCE_STATE} = "stopped" ]; then
     echo "Instance already exists"
     return 0
   fi
