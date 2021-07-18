@@ -5,34 +5,34 @@ help: ## Show this help.
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
 Frontend: ## Install Frontend.
-	@sh Nroboshop/components/Frontend.sh
+	@sh components/Frontend.sh
 
-mongodb: ## Install mongodb.
-	@sh Nroboshop/component/mongodb.sh
+Mongodb: ## Install mongodb.
+	@sh component/Mongodb.sh
 
-cart: ## Install cart.
-	@sh Nroboshop/component/cart.sh
+Cart: ## Install cart.
+	@sh component/Cart.sh
 
-catalogue: ## Install catalogue.
-	@sh Nroboshop/component/catalogue.sh
+Catalogue: ## Install catalogue.
+	@sh component/Catalogue.sh
 
-mysql: ## Install mysql.
-	@sh Nroboshop/component/mysql.sh
+Mysql: ## Install mysql.
+	@sh component/Mysql.sh
 
-payment: ## Install payment.
-	@sh Nroboshop/component/payment.sh
+Payment: ## Install payment.
+	@sh component/Payment.sh
 
-rabbitmq: ## setup rabbitmq
-	@sh components/rabbitmq.sh
+Rabbitmq: ## setup rabbitmq
+	@sh components/Rabbitmq.sh
 
-redis: ## setup redis
-	@sh components/redis.sh
+Redis: ## setup redis
+	@sh components/Redis.sh
 
-shipping: ## setup shipping
-	@sh components/shipping.sh
+Shipping: ## setup shipping
+	@sh components/Shipping.sh
 
-user: ## setup user
-	@sh components/user.sh
+User: ## setup user
+	@sh components/User.sh
 
 
 
