@@ -10,16 +10,6 @@ fi
 LID=lt-0bc9e6d40bf1e5c3c
 
 
-if [ "$1" = "all" ];then
-  for instance in Frontend mongodb cart catalogue mysql payment rabbitmq redis shipping user ; do
-    COMPONENT=${instance}
-    INSTANCE_CREATE
-  done
-else
-    COMPONENT=$1
-    INSTANCE_CREATE
-fi
-
 
 update_DNS() {
   IPADDRESS=$(aws ec2 describe-instnaces --filters "name=tag:name,values=${COMPONENT}" | jq .Reservations[].instances[].PrivateIpAddress | xargs -n1)
@@ -46,3 +36,13 @@ INSTANCE_CREATE() {
 }
 
 
+
+if [ "$1" = "all" ];then
+  for instance in Frontend mongodb cart catalogue mysql payment rabbitmq redis shipping user ; do
+    COMPONENT=${instance}
+    INSTANCE_CREATE
+  done
+else
+    COMPONENT=$1
+    INSTANCE_CREATE
+fi
