@@ -7,8 +7,7 @@ if [ -z ${COMPONENT} ];then
   exit 1
 fi
 
-LID=lt-0bc9e6d40bf1e5c3c
-
+LID=lt-0e4a9279d9989f510
 
 
 update_DNS() {
@@ -30,11 +29,10 @@ INSTANCE_CREATE() {
     return 0
   else
     echo "either isntance terminated or not yet created"
-    aws ec2 run-instances --launch-template LaunchTemplateId=${LID},Version=3 --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]"
+    aws ec2 run-instances --launch-template LaunchTemplateId=${LID},Version=1 --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]"
     update_DNS
   fi
 }
-
 
 
 if [ "$1" = "all" ];then
