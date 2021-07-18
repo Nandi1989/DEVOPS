@@ -12,7 +12,7 @@ LID=lt-0bc9e6d40bf1e5c3c
 
 if [ "$1" = "all" ];then
   for instance in Frontend mongodb cart catalogue mysql payment rabbitmq redis shipping user do
-    COMPONENT=$instance
+    COMPONENT=${instance}
     INSTANCE_CREATE
   done
   else
