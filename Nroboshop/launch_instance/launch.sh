@@ -21,16 +21,16 @@ update_DNS() {
 
 INSTANCE_CREATE() {
   INSTANCE_STATE=$(aws ec2 describe-instances --filters "Name=tag:name,Values=${COMPONENT}" | jq .Reservations[].instances[].State.Name | xargs -n1)
-  if [ ${INSTANCE_STATE} = "running" ];then
+  if [ "${INSTANCE_STATE}" = "running" ];then
      echo "Instance is already existing"
      update_DNS
      return 0
-  elif [ ${INSTACE_STATE} = "stopped" ];then
+  elif [ "${INSTACE_STATE}" = "stopped" ];then
     echo "Instance state is Stopped"
     return 0
   else
     echo "either isntance terminated or not yet created"
-    aws ec2 run-instances LaunchTemplateId=${LID},Version=3 --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]'
+    aws ec2 run-instances LaunchTemplateId=${LID},Version=3 --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]"
     update_DNS
   fi
 }
