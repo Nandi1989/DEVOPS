@@ -15,7 +15,8 @@ if [ "$1" = "all" ];then
     COMPONENT=${instance}
     INSTANCE_CREATE
   done
-  else
+else
+    COMPONENT=$1
     INSTANCE_CREATE
 fi
 
