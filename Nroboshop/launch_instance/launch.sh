@@ -12,15 +12,15 @@ LID=lt-0bc9e6d40bf1e5c3c
 
 
 update_DNS() {
-  IPADDRESS=$(aws ec2 describe-instances --filters "name=tag:name,values=${COMPONENT}" | jq .Reservations[].instances[].PrivateIpAddress | xargs -n1)
-  sed -e "s/COMPONENT/${COMPONENT}" -e "s/IPADDRESS/$IPADDRESS" record.json > /tmp/record.json
+  IPADDRESS=$(aws ec2 describe-instances --filters "Name=tag:name,Values=${COMPONENT}" | jq .Reservations[].instances[].PrivateIpAddress | xargs -n1)
+  sed -e "s/COMPONENT/${COMPONENT}/" -e "s/IPADDRESS/${IPADDRESS}/" record.json > /tmp/record.json
   aws route53 change-resource-record-sets --hosted-zone-id Z031396221895VDGBP6VC --change-batch file:///tmp/record.json | jq
 
 }
 
 
 INSTANCE_CREATE() {
-  INSTANCE_STATE=$(aws ec2 describe-instances --filters "name=tag:name,values=${COMPONENT}" | jq .Reservations[].instances[].State.Name | xargs -n1)
+  INSTANCE_STATE=$(aws ec2 describe-instances --filters "Name=tag:name,Values=${COMPONENT}" | jq .Reservations[].instances[].State.Name | xargs -n1)
   if [ ${INSTANCE_STATE} = "running" ];then
      echo "Instance is already existing"
      update_DNS
