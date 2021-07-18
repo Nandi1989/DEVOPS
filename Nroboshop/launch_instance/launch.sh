@@ -30,7 +30,7 @@ INSTANCE_CREATE() {
     return 0
   else
     echo "either isntance terminated or not yet created"
-    aws ec2 run-instances LaunchTemplateId=${LID},Version=3 --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]"
+    aws ec2 run-instances --launch-template LaunchTemplateId=${LID},Version=3 --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]"
     update_DNS
   fi
 }
