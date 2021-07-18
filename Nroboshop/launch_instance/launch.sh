@@ -24,11 +24,11 @@ INSTANCE_CREATE() {
      echo "Instance is already existing"
      update_DNS
      return 0
-  elif [ "${INSTACE_STATE}" = "stopped" ];then
+  elif [ "${INSTANCE_STATE}" = "stopped" ];then
     echo "Instance state is Stopped"
     return 0
   else
-    echo "either isntance terminated or not yet created"
+    echo "either instance terminated or not yet created"
     aws ec2 run-instances --launch-template LaunchTemplateId=${LID},Version=1 --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]"
     update_DNS
   fi
