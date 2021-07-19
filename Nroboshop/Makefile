@@ -14,7 +14,7 @@ Cart: ## Install cart.
 	@sh components/Cart.sh
 
 Catalogue: ## Install catalogue.
-	@sh components/Catalogue.sh
+	@sh components/Catalouge.sh
 
 Mysql: ## Install mysql.
 	@sh components/Mysql.sh
