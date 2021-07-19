@@ -1,6 +1,6 @@
 #! /bin/bash
 
-source Nroboshop/components/common.sh
+source components/common.sh
 
 NodeJS_Install
 

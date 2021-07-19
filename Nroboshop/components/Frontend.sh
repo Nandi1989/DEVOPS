@@ -1,6 +1,6 @@
 #! /bin/bash
 
-source Nroboshop/components/common.sh
+source components/common.sh
 
 ## To remove existing log.
 rm -f /tmp/roboshop.log
