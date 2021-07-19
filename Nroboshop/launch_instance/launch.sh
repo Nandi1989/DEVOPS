@@ -23,6 +23,7 @@ INSTANCE_CREATE() {
   if [ "${INSTANCE_STATE}" = "running" ];then
      echo "Instance is already existing"
      update_DNS
+     sleep 30
      return 0
   elif [ "${INSTANCE_STATE}" = "stopped" ];then
     echo "Instance state is Stopped"
