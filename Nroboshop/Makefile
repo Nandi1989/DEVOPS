@@ -1,4 +1,4 @@
-#! /Bin/Bash
+#!/bin/bash
 
 
 help: ## Show this help.
