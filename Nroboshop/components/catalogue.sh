@@ -6,12 +6,12 @@ NodeJS_Install
 
 Useradd
 
-Unzip_NPM_Install "Catalogue"
+Unzip_NPM_Install "catalogue"
 
-Servicefile_Update "Catalogue"
+Servicefile_Update "catalogue"
 Update_Permission
 
-Component_Restart "Catalogue"
+Component_Restart "catalogue"
 
 
 
