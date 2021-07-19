@@ -8,19 +8,19 @@ Frontend: ## Install Frontend.
 	@sh components/Frontend.sh
 
 Mongodb: ## Install mongodb.
-	@sh component/Mongodb.sh
+	@sh components/Mongodb.sh
 
 Cart: ## Install cart.
-	@sh component/Cart.sh
+	@sh components/Cart.sh
 
 Catalogue: ## Install catalogue.
-	@sh component/Catalogue.sh
+	@sh components/Catalogue.sh
 
 Mysql: ## Install mysql.
-	@sh component/Mysql.sh
+	@sh components/Mysql.sh
 
 Payment: ## Install payment.
-	@sh component/Payment.sh
+	@sh components/Payment.sh
 
 Rabbitmq: ## setup rabbitmq
 	@sh components/Rabbitmq.sh
