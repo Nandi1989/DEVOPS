@@ -17,6 +17,12 @@ NodeJS_Install() {
   HEAD "Install nodejs"
   yum install nodejs make gcc-c++ -y &>> /tmp/roboshop.log
   STAT $?
+
+  Useradd
+  Unzip_NPM_Install "$1"
+  Servicefile_Update "$1"
+  Update_Permission
+  Component_Restart "$1"
 }
 
 Useradd() {
@@ -44,7 +50,11 @@ Unzip_NPM_Install() {
 
 Servicefile_Update() {
   HEAD "Update IP address of MONGODB Server in systemd.service "
-  sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/$1/systemd.service && mv /home/roboshop/$1/systemd.service /etc/systemd/system/$1.service  &>> /etc/roboshop.log
+  sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/$1/systemd.service
+  STAT $?
+
+  HEAD "Move the service file"
+  mv /home/roboshop/$1/systemd.service /etc/systemd/system/$1.service  &>> /etc/roboshop.log
   STAT $?
 }
 

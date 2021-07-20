@@ -9,11 +9,11 @@ HEAD "INSTALL REDIS"
 STAT $?
 
 HEAD "INSTALL REDIS"
-  yum-config-manager --enable remi && yum install redis -y &>> /tmp/roboshop.log
+  yum-config-manager --enable remi &>> /tmp/roboshop.log && yum install redis -y &>> /tmp/roboshop.log
 STAT $?
 
 HEAD "modify the IP address"
-sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/redis.conf
+sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/redis.conf &>> /tmp/roboshop.log
 STAT $?
 
 Component_Restart "redis"

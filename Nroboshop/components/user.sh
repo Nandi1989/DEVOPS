@@ -2,5 +2,6 @@
 
 source Nroboshop/components/common.sh
 
-/tmp/roboshop.log
-NodeJS_Install
+rm -rf /tmp/roboshop.log
+
+NodeJS_Install "user"
