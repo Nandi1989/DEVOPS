@@ -32,10 +32,10 @@ Useradd() {
 
 Unzip_NPM_Install() {
   HEAD "Download catalogue archive"
-  curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>> /etc/roboshop.log
+  curl -s -L -o /tmp/$1.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>> /etc/roboshop.log
   STAT $?
 
-  cd /home/roboshop && unzip /tmp/catalogue.zip && mv catalogue-main catalogue  && cd /home/roboshop/catalogue &>> /etc/roboshop.log
+  cd /home/roboshop && unzip /tmp/$1.zip && mv catalogue-main catalogue  && cd /home/roboshop/catalogue &>> /etc/roboshop.log
   STAT $?
 
   npm install --unsafe perm &>> /etc/roboshop.log
