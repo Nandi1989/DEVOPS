@@ -55,7 +55,7 @@ STAT $?
 }
 
 Component_Restart() {
-  HEAD "Restart"
+  HEAD "Restart the service $1"
   systemctl daemon-reload && systemctl start $1 && systemctl enable $1 &>> /etc/roboshop.log
   STAT $?
 }
