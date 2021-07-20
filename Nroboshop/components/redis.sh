@@ -2,7 +2,6 @@
 source components/common.sh
 
 rm -f /tmp/roboshop.log
-set-hostname redis
 
 HEAD "INSTALL REDIS"
 #  yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm -y &>> /tmp/roboshop.log
