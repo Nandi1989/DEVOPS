@@ -1,4 +1,5 @@
 #!/bin/bash
+source components/common.sh
 
 HEAD "INSTALL REDIS"
   yum install epel-release yum-utils -y &>> roboshop.log
