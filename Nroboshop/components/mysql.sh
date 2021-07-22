@@ -17,10 +17,26 @@ yum remove mariadb-libs -y && yum install mysql-community-server -y &>> /tmp/rob
 STAT $?
 
 HEAD "Systemctl Mysql"
-systemctl enable mysqld && systemctl start mysqld &>> /tmp/roboshop.log
+systemctl enable mysqld &>>/tmp/roboshop.log && systemctl start mysqld &>> /tmp/roboshop.log
 STAT $?
 
-#HEAD "search for temporary password"
-#temppass=$(grep 'a temporary password' /var/log/mysqld.log | awk '{print $NF}')
+temppass=$(grep 'a temporary password' /var/log/mysqld.log | awk '{print $NF}')
+echo "echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';
+uninstall plugin validate_password;" >/tmp/db.sql"
 
+echo show database | mysql -uroot -pRoboshop@1 &>>/tmp/roboshop.log
+
+if [ $? -ne 0 ];then
+  echo"echo password need to be changed"
+  mysql --connect-expired-password -uroot -p"${temppass}" </tmp/db.sql &>>/tmp/roboshop.log
+  STAT $?
+fi
+
+HEAD "Download schema"
+curl -s -L -o /tmp/mysql.zip "https://github.com/roboshop-devops-project/mysql/archive/main.zip"
+STAT $?
+
+HEAD "Load schema services"
+cd /tmp && unzip mysql.zip && cd mysql-main &>> /tmp/roboshop.log && mysql -u root -ppassword <shipping.sql &>> /tmp/roboshop.log
+STAT $?
 
