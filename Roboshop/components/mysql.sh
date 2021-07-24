@@ -18,4 +18,13 @@ STAT $?
 
 Restart_service "mysql"
 
-TEMP_PASS=$(grep 'temporary password' )
+TEMP_PASS=$(grep 'temporary password' /var/log/mysqld.log)
+
+echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'Nandi143$';
+uninstall plugin validate_password;" >/tmp/db.sql
+
+echo "show databases" && mysql -u root -p Nandi143$ &>>/tmp/roboshop.log
+if [ $? -ne 0]; then
+  {
+
+    }
