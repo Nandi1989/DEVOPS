@@ -54,7 +54,6 @@ Instal_NPM(){
 Servicefile_Update() {
   HEAD "Update IP address of MONGODB Server in systemd.service "
   sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' -e 's/CARTENDPOINT/cart.roboshop.internal' -e 's/DBHOST/mysql.roboshop.internal'  /home/roboshop/$1/systemd.service &>> /tmp/roboshop.log
-
   STAT $?
 
   HEAD "Move the service file"
