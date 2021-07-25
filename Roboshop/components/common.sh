@@ -57,13 +57,13 @@ Download_Unzip_Archive() {
 
 NPM_INSTALL(){
   HEAD "Install npm"
-  sudo npm install --unsafe-perm   &>> /tmp/roboshop.log
+  sudo npm install --unsafe-perm  &>> /tmp/roboshop.log
   STAT $?
 }
 
 IP_Update_systemd(){
   HEAD "Update the  IP address"
-  sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/$1/systemd.service && mv /home/roboshop/$1/systemd.service /etc/systemd/system/catalogue.service  &>> /tmp/roboshop.log
+  sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' -e 's/CARTENDPOINT/cart.roboshop.internal/' -e 's/DBHOST/mysql.roboshop.internal/' -e 's/CARTHOST/cart.roboshop.internal/' -e 's/USERHOST/user.roboshop.internal/' -e 's/AMQPHOST/rabbitmq.roboshop.internal/' /home/roboshop/$1/systemd.service  && mv /home/roboshop/$1/systemd.service /etc/systemd/system/$1.service
   STAT $?
 }
 

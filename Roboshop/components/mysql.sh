@@ -24,7 +24,17 @@ echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'Nandi143$';
 uninstall plugin validate_password;" >/tmp/db.sql
 
 echo "show databases" && mysql -u root -p Nandi143$ &>>/tmp/roboshop.log
-if [ $? -ne 0]; then
-  {
+if [ $? -ne 0 ];then
+    HEAD "Change  mysql Password"
+    mysql --connect-expired-password -u root -p "${TEMP_PASS}" < /tmp/db.sql &>> /tmp/roboshop.log
+    STAT $?
+fi
 
-    }
+HEAD "Download the archive"
+curl -s -L -o /tmp/mysql.zip "https://github.com/roboshop-devops-project/mysql/archive/main.zip" &>> /tmp/roboshop.log
+STAT $?
+
+
+HEAD "Load Shipping Schema"
+cd /tmp && unzip -o mysql.zip &>> /tmp/roboshop.log && cd mysql-main && mysql -u root -pNandi143$ <shipping.sql  &>> /tmp/roboshop.log
+STAT $?
