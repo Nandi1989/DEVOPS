@@ -15,5 +15,8 @@ Note: command may fail with permission denied, So run as root user
 HEAD "Install the dependencies"
 cd /home/roboshop/payment &>> /tmp/roboshop.log && pip3 install -r requirements.txt &>> /tmp/roboshop.log
 STAT $?
+HEAD "service file update"
+mv /home/roboshop/payment/systemd.service /etc/systemd/system/payment.service &>> /tmp/roboshop.log
+STAT $?
 
 Component_Restart "payment"

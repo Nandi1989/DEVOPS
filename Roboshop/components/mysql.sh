@@ -1,6 +1,6 @@
 #!bin/bash
 
-source component/Common.sh
+source component/common.sh
 
 rm -rf /tmp/roboshop.log
 

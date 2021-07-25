@@ -5,10 +5,10 @@ help:           ## Show this help.
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
 Frontend: ## install Frontend
-	@sh components/Frontend.sh
+	@sh components/frontend.sh
 
 mongodb: ## setup mongodb
-	@sh components/Mongodb.sh
+	@sh components/mongodb.sh
 
 cart: ## setup cart
 	@sh components/cart.sh

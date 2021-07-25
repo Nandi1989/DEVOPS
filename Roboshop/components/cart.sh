@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source components/Common.sh
+source components/common.sh
 rm -rf /tmp/roboshop.log
 
 NodeJS_Install "cart"
