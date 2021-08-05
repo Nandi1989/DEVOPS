@@ -1,0 +1,62 @@
+- name: Demo variable file
+  hosts: all
+  vars:
+    url: PLAY.example.com
+  tasks:
+    - name: print play level variable
+      debug:
+        msg: url = {{ url }}
+    - name: print variable from task level
+      vars:
+        url: TASK.example.com
+      debug:
+        msg: url = {{ url }}
+
+- name: print variable from file
+  hosts: all
+  var_files:
+    - header.yaml
+  tasks:
+    debug:
+      msg: url = {{ url }}
+
+- name: print variable from CLI
+  hosts: all
+  vars_prompt:
+    name: url
+    prompt: Enter url
+    private: no
+  tasks:
+    debug:
+      msg: url = {{ url }}
+
+- name: print variable from inventory file
+  hosts: all
+  tasks:
+    debug:
+      msg: url = {{ url }}
+
+- name: print variable from Facts
+  hosts: all
+  tasks:
+    debug:
+      msg: python version = {{ ansible_python_version }}
+
+- name: Register a variable
+  hosts: all
+  tasks:
+    - name: grab the number of users
+      shell: who | wc -l
+      register: out
+
+    - name: print registered variable
+      debug:
+        msg: number of users = {{ out.stdout }}
+
+    - name: declare a variable
+      set_facts:
+        NUM_USERS: "{{ out.stdout }}"
+
+    - name: print declared variable
+      debug:
+        msg: number of users = "{{ NUM_USERS }}"
